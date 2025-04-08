@@ -73,7 +73,7 @@ public class Main {
         path = spaceGraph2.DFS(aNodeName, bNodeName);
         printPath(path, aNodeName, bNodeName, "DFS");
 
-        path = spaceGraph3.hillClimbing(aNodeName, bNodeName);
+        path = spaceGraph3.dijkstra(aNodeName, bNodeName);
         printPath(path, aNodeName, bNodeName, "Hill Climbing");
 
     }

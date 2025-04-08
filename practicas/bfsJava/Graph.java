@@ -140,32 +140,33 @@ public class Graph {
         return new Stack<>();
     }
 
-    public Stack<Node> hillClimbing(String init, String target) {
+    public Stack<Node> dijkstra(String init, String target) {
 
         Node current = this.nodes.get(init);
-        Queue<Node> pending = new LinkedList<>();
+
+        Map<Node, Node> prevVisitCity = new HashMap<>();
         Map<Node, Integer> closetedRoute = new HashMap<>();
 
         // Node aux = null;
-        pending.add(current);
         closetedRoute.put(current, 0);
 
         while (!current.cityName.equals(target)) {
-            current = pending.remove();
             current.setVisited(true);
-            
+            Node aux = null;
             for (Node neighbor : current.neighbors.values()) {
-
-                if (neighbor.isVisited()) continue;
-
-                pending.add(neighbor);
-                closetedRoute.put(neighbor, current.distances.get(neighbor).intValue());
-                // aux = neighbor;
+                System.out.println(
+                        "City Name: " + neighbor.cityName + "; City Distance: " + neighbor.distances.get(current));
+                if (aux != null) {
+                    if (aux.distances.get(current) > neighbor.distances.get(current)) {
+                        aux = neighbor;
+                    }
+                } else
+                    aux = neighbor;
             }
+            prevVisitCity.put(aux, current);
         }
 
         System.out.println("Control check");
-
         return formatPath(current);
     }
 
