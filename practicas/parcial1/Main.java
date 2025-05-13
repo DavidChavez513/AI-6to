@@ -4,7 +4,7 @@ import java.util.Stack;
 public class Main {
 
     static String[] usCities = {
-        "NY", "LA", "CHI", "HOU", "PHX", 
+        "NY", "LA", "CHI", "HOU", "PHX",
         "PHI", "SA", "SD", "DAL", "SJ",
         "AUS", "JAX", "FW", "COL", "CHA",
         // "SF", "IND", "SEA", "DEN", "DC",
@@ -73,7 +73,7 @@ public class Main {
         path = spaceGraph2.DFS(aNodeName, bNodeName);
         printPath(path, aNodeName, bNodeName, "DFS");
 
-        path = spaceGraph3.hillClimbing(aNodeName, bNodeName);
+        path = spaceGraph3.dijkstra(aNodeName, bNodeName);
         printPath(path, aNodeName, bNodeName, "Hill Climbing");
 
     }

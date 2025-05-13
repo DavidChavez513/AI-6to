@@ -140,27 +140,23 @@ public class Graph {
         return new Stack<>();
     }
 
-    public Stack<Node> hillClimbing(String init, String target) {
+    public Stack<Node> dijkstra(String init, String target) {
 
         Node current = this.nodes.get(init);
         Queue<Node> pending = new LinkedList<>();
-        Map<Node, Integer> closetedRoute = new HashMap<>();
+        Map<Node, Integer> fullMapDistances = new HashMap<>();
 
         // Node aux = null;
         pending.add(current);
-        closetedRoute.put(current, 0);
+        fullMapDistances.put(current, 0);
 
         while (!current.cityName.equals(target)) {
             current = pending.remove();
             current.setVisited(true);
             
+            Node cityClosed = null;
             for (Node neighbor : current.neighbors.values()) {
-
-                if (neighbor.isVisited()) continue;
-
                 pending.add(neighbor);
-                closetedRoute.put(neighbor, current.distances.get(neighbor).intValue());
-                // aux = neighbor;
             }
         }
 
