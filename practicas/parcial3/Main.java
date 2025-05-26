@@ -11,7 +11,6 @@ public class Main {
         int[] labels = dst.getAndGateOutputs(); // Etiquetas esperadas para la compuerta AND
 
         Neuron perceptron1 = new Neuron(inputs[0].length);
-
         System.out.println("======================= Perceptron 2 inputs AND ===================================");
         perceptron1.train(dst.getAndGateInputs(), dst.getAndGateOutputs(), 10000);
 
@@ -21,14 +20,13 @@ public class Main {
                     " | Predicho: " + perceptron1.prediction(inputs[i]));
         }
 
-
         System.out.println("======================= Perceptron 3 inputs AND ===================================");
 
         inputs = dst.getAndGateInputs3Inputs();
         labels = dst.getAndGateOutputs3Inputs();
 
-        Neuron percep2 = new Neuron(inputs.length);
-        percep2.train(inputs, labels, 10000);
+        Neuron percep2 = new Neuron(inputs[0].length);
+        percep2.train(inputs, labels, 1000);
         for (int i = 0; i < inputs.length; i++) {
             System.out.println("Entrada: " + Arrays.toString(inputs[i]) +
                     " => Esperado: " + labels[i] +
@@ -37,12 +35,11 @@ public class Main {
 
         System.out.println("======================= Perceptron 2 inputs OR ===================================");
 
-
         inputs = dst.getOrGateInputs();
         labels = dst.getOrGateOutputs();
 
-        Neuron percep3 = new Neuron(inputs.length);
-        percep3.train(inputs, labels, 10000);
+        Neuron percep3 = new Neuron(inputs[0].length);
+        percep3.train(inputs, labels, 70);
         for (int i = 0; i < inputs.length; i++) {
             System.out.println("Entrada: " + Arrays.toString(inputs[i]) +
                     " => Esperado: " + labels[i] +
@@ -51,12 +48,11 @@ public class Main {
 
         System.out.println("======================= Perceptron 3 inputs OR ===================================");
 
-
         inputs = dst.getOrGateInputs3Inputs();
         labels = dst.getOrGateOutputs3Inputs();
 
-        Neuron percep4 = new Neuron(inputs.length);
-        percep4.train(inputs, labels, 10000);
+        Neuron percep4 = new Neuron(inputs[0].length);
+        percep4.train(inputs, labels, 50);
         for (int i = 0; i < inputs.length; i++) {
             System.out.println("Entrada: " + Arrays.toString(inputs[i]) +
                     " => Esperado: " + labels[i] +

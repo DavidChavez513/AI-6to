@@ -4,16 +4,11 @@ public class Neuron {
 
     double[] weights;
     double bias;
-    double learningRate = 0.3;
+    double learningRate = 0.1;
 
     public Neuron(int size) {
         weights = new double[size];
-
-        for (int i = 0; i < weights.length; i++) {
-            weights[i] = Math.random();
-        }
-
-        bias = Math.random(); // Valor inicial del BIAS
+        bias = Math.random() - 0.7; // Valor inicial del BIAS
     }
 
     private int sigma(double predict) {
@@ -25,6 +20,7 @@ public class Neuron {
         for (int i = 0; i < weights.length; i++) {
             sum += weights[i] * inputs[i];
         }
+
         return sigma(sum);
     }
 
@@ -37,7 +33,7 @@ public class Neuron {
                     weights[j] += learningRate * error * data[j][i];
                 }
 
-                bias += learningRate * error;
+                bias -= learningRate * error;
             }
         }
     }
